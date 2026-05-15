@@ -325,3 +325,41 @@ Foram feitas as seguintes verificacoes:
 - Foi verificado o status Git antes do commit e push.
 
 O risco principal desta etapa e o balao cobrir conteudo em telas pequenas. Para reduzir isso, no mobile o texto e ocultado visualmente e o botao fica compacto no canto inferior direito.
+
+## 2026-05-15 - Etapa 10: Animacoes profissionais e microinteracoes
+
+### Arquivos lidos antes da alteracao
+
+- `index.html`
+- `styles.css`
+- `app.js`
+- `PROJECT_PROCESS.MD`
+- `PROJECT_STATUS.MD`
+- Status Git da pasta do projeto
+
+### Estado real encontrado
+
+A landing page ja tinha estrutura completa, CTAs, galeria, balao flutuante e efeitos de hover basicos. Ainda faltavam animacoes de entrada, movimento sutil no painel do hero, chamada visual no contato flutuante, destaque de cotacao e microinteracoes mais perceptiveis nas imagens de prova.
+
+### Alteracao realizada
+
+- Foram adicionadas animacoes iniciais suaves no hero para titulo, texto, CTAs, faixa de confianca e painel de moderacao.
+- O ponto de protecao ativa no painel passou a pulsar.
+- Os eventos do painel `SPAM`, `LINK` e `CAPTCHA` entram com movimento alternado.
+- Os CTAs principais ganharam um brilho discreto e recorrente.
+- O balao flutuante do Telegram ganhou pulso externo sutil.
+- A galeria de provas ganhou hover com leve elevacao, brilho de borda e realce da imagem.
+- Os valores de cotacao em XMR/BRL ganharam destaque rapido quando atualizam.
+- Foi criado um `IntersectionObserver` em `app.js` para revelar secoes, cards, planos, FAQ e provas conforme o usuario rola a pagina.
+- Foi adicionado suporte a `prefers-reduced-motion`, reduzindo animacoes para usuarios que preferem menos movimento.
+
+### Simulacao e prevencao de regressao
+
+Foram feitas as seguintes verificacoes:
+
+- `node --check .\app.js` passou sem erros de sintaxe.
+- Foram encontradas 203 chaves `data-i18n` no HTML, todas presentes nos dicionarios PT-BR e EN-US.
+- `git diff --check` nao encontrou problemas de espaco ou quebras invalidas; exibiu apenas avisos normais de LF/CRLF do Windows.
+- Foram localizadas as novas regras de animacao e funcoes (`initScrollReveal`, `flashRateValues`, `reveal-on-scroll`, `prefers-reduced-motion`).
+
+O risco principal desta etapa e excesso de movimento prejudicar percepcao de confianca ou experiencia em celular. Para reduzir isso, as animacoes foram mantidas curtas, sutis e com fallback para `prefers-reduced-motion`.

@@ -485,6 +485,57 @@ const brlPrice = document.querySelector("#brl-price");
 const refreshRatesButton = document.querySelector("#refresh-rates");
 const currentYear = document.querySelector("#current-year");
 
+function initScrollReveal() {
+  const revealElements = Array.from(
+    document.querySelectorAll(
+      [
+        ".section-band:not(.hero) .section-heading",
+        ".split-section > *",
+        ".use-case-grid article",
+        ".feature-grid article",
+        ".preview-figure",
+        ".pricing-copy",
+        ".price-board article",
+        ".plan-card",
+        ".faq-list details"
+      ].join(", ")
+    )
+  );
+
+  if (!revealElements.length) {
+    return;
+  }
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  revealElements.forEach((element, index) => {
+    element.classList.add("reveal-on-scroll");
+    element.style.setProperty("--reveal-delay", `${Math.min(index % 5, 4) * 60}ms`);
+  });
+
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    revealElements.forEach((element) => element.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      rootMargin: "0px 0px -12% 0px",
+      threshold: 0.14
+    }
+  );
+
+  revealElements.forEach((element) => observer.observe(element));
+}
+
 function t(key) {
   return translations[activeLanguage][key] || translations["pt-BR"][key] || key;
 }
@@ -544,6 +595,14 @@ function setLoadingRates() {
   rateStatus.textContent = t("rateLoading");
 }
 
+function flashRateValues() {
+  [xmrPrice, brlPrice].forEach((element) => {
+    element.classList.remove("rate-value-updated");
+    void element.offsetWidth;
+    element.classList.add("rate-value-updated");
+  });
+}
+
 async function fetchJson(url) {
   const response = await fetch(url, {
     headers: {
@@ -594,6 +653,7 @@ async function updateRates() {
     }).format(new Date());
 
     rateStatus.textContent = t("rateUpdated").replace("{time}", time);
+    flashRateValues();
   } catch (error) {
     xmrPrice.textContent = "--";
     brlPrice.textContent = "--";
@@ -611,6 +671,7 @@ languageButtons.forEach((button) => {
 refreshRatesButton.addEventListener("click", updateRates);
 
 currentYear.textContent = new Date().getFullYear();
+initScrollReveal();
 applyLanguage(activeLanguage);
 updateRates();
 window.setInterval(updateRates, RATE_REFRESH_MS);

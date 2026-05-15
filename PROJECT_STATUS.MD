@@ -2,7 +2,7 @@
 
 ## Etapa atual
 
-Landing page estatica do The Staff com planos, CTAs, SEO reforcado, galeria de provas visuais reais de moderacao, contato flutuante no Telegram e Git local conectado ao GitHub.
+Landing page estatica do The Staff com planos, CTAs, SEO reforcado, galeria de provas visuais reais de moderacao, contato flutuante no Telegram, animacoes profissionais e Git local conectado ao GitHub.
 
 ## O que ja existe funcionando
 
@@ -14,12 +14,16 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, galeria de p
 - Links de contratacao apontando para `https://t.me/WardenControlBot`.
 - Balao flutuante de contato apontando para `https://t.me/TrueKatz666`.
 - Balao flutuante acompanha o scroll por `position: fixed` e fica compacto no mobile.
+- Balao flutuante com pulso sutil para chamar contato sem poluir a pagina.
 - Hero usando painel visual de moderacao, sem a imagem grande cortada.
+- Hero com entrada suave de titulo, texto, CTAs, faixa de confianca e painel.
+- Painel do hero com ponto de protecao pulsando e eventos entrando em sequencia.
 - Imagem `assets/the-staff-preview.png` exibida em secao propria de prova visual.
 - Capturas reais de moderacao adicionadas como prova de eficiencia:
   - `assets/prova-moderacao-link-telegram-ban.png`
   - `assets/prova-moderacao-visual-policy-warnings.png`
 - Galeria visual com legendas explicando bloqueio visual, advertencias progressivas e ban automatico.
+- Galeria visual com hover animado, leve elevacao e realce das imagens.
 - Tags sociais `og:image` e `twitter:image` preparadas para a imagem principal.
 - Titulo, meta description e conteudo reforcados para buscas como bot moderador Telegram, bots para Telegram, bot anti-spam Telegram, moderacao visual Telegram, advertencias Telegram e ban automatico Telegram.
 - Dados estruturados JSON-LD para `SoftwareApplication` e `FAQPage`, incluindo lista de screenshots.
@@ -29,6 +33,10 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, galeria de p
 - Destaque visual para moderacao NSFW/GORE nos planos Trial e PRO.
 - Cards de recursos com explicacao breve de cada funcao.
 - Efeito de sombra/elevacao ao passar o mouse nos cards de recursos e planos.
+- Reveals ao rolar a pagina usando `IntersectionObserver`.
+- Brilho discreto nos CTAs principais.
+- Destaque rapido nos valores de cotacao quando XMR/BRL atualizam.
+- Suporte a `prefers-reduced-motion` para reduzir movimento quando configurado no navegador/sistema.
 - Textos comerciais reforcados para explicar valor, reduzir friccao e incentivar teste/assinatura.
 - Textos principais em PT-BR revisados com acentuacao correta.
 - Layout responsivo para desktop e celular.
@@ -57,6 +65,7 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, galeria de p
 - Revisar textos finais de venda apos validacao visual e comercial do usuario.
 - Testar visualmente em navegador real antes de publicar.
 - Verificar no site publicado se o balao flutuante nao cobre CTAs importantes em telas pequenas.
+- Verificar no site publicado se as animacoes continuam discretas em mobile e nao distraem da conversao.
 - Configurar Google Search Console apos o deploy.
 - Avaliar se sera necessario backend proprio no futuro para cachear cotacoes e reduzir dependencia direta de APIs publicas no navegador.
 
