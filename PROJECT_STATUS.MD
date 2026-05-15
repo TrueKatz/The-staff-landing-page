@@ -2,7 +2,7 @@
 
 ## Etapa atual
 
-Landing page estatica do The Staff com planos, CTAs, SEO reforcado, galeria de provas visuais reais de moderacao, contato flutuante no Telegram, animacoes profissionais, preparacao para Meta Pixel e Git local conectado ao GitHub.
+Landing page estatica do The Staff com planos, CTAs, SEO reforcado, miniatura social dedicada, galeria de provas visuais reais de moderacao, contato flutuante no Telegram, animacoes profissionais, preparacao para Meta Pixel e Git local conectado ao GitHub.
 
 ## O que ja existe funcionando
 
@@ -24,7 +24,9 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, galeria de p
   - `assets/prova-moderacao-visual-policy-warnings.png`
 - Galeria visual com legendas explicando bloqueio visual, advertencias progressivas e ban automatico.
 - Galeria visual com hover animado, leve elevacao e realce das imagens.
-- Tags sociais `og:image` e `twitter:image` preparadas para a imagem principal.
+- Tags sociais `og:image` e `twitter:image` usando a miniatura dedicada `assets/site-card-thumbnail.png`.
+- `og:image` e `twitter:image` apontando para URL absoluta HTTPS do GitHub Pages.
+- JSON-LD usando `assets/site-card-thumbnail.png` como imagem principal estruturada.
 - Titulo, meta description e conteudo reforcados para buscas como bot moderador Telegram, bots para Telegram, bot anti-spam Telegram, moderacao visual Telegram, advertencias Telegram e ban automatico Telegram.
 - Dados estruturados JSON-LD para `SoftwareApplication` e `FAQPage`, incluindo lista de screenshots.
 - Secao textual adicional com termos de SEO usados de forma natural.
@@ -69,7 +71,7 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, galeria de p
 - Definir dominio final para adicionar `canonical`, `og:url` e `sitemap.xml`.
 - Manter a imagem real em `assets/the-staff-preview.png` para a secao visual e previa social.
 - Aguardar o GitHub Pages finalizar o deploy apos cada push.
-- Definir URL absoluta da imagem apos o dominio final, porque algumas redes sociais exigem URL absoluta em `og:image`.
+- Atualizar a URL absoluta da miniatura social se o site ganhar dominio proprio no futuro.
 - Revisar textos finais de venda apos validacao visual e comercial do usuario.
 - Testar visualmente em navegador real antes de publicar.
 - Verificar no site publicado se o balao flutuante nao cobre CTAs importantes em telas pequenas.
@@ -87,5 +89,6 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, galeria de p
 - A versao atual e uma primeira base organizada para validacao visual e textual.
 - A imagem principal e as provas agora aparecem fora do hero para evitar corte visual; validar no site publicado apos commit.
 - As capturas reais tem proporcoes diferentes da arte principal, entao a altura da secao visual deve ser revisada em mobile depois do deploy.
+- Plataformas sociais podem manter cache da miniatura antiga por algum tempo apos o deploy.
 - O Meta Pixel so passa a rastrear quando o ID real for inserido.
 - Sem banner de consentimento, a responsabilidade por transparencia e base legal fica concentrada na politica de privacidade e nas configuracoes de anuncios/cookies escolhidas pelo responsavel do site.

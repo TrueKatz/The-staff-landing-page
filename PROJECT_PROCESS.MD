@@ -457,3 +457,32 @@ A landing page ja tinha CTAs para o bot oficial, contato flutuante no Telegram, 
 - A implementacao foi feita com fallback: sem ID de Pixel, nenhuma biblioteca externa da Meta e carregada.
 - A logica de rastreamento usa os links ja existentes, entao nao muda o destino dos botoes.
 - O risco principal e legal/privacidade: ao ativar o Pixel sem banner, cookies de marketing podem ser gravados pelo Meta Pixel. Para reduzir risco operacional, ainda e recomendavel manter uma politica de privacidade explicando o uso de ferramentas de anuncios e mensuracao.
+
+## 2026-05-15 - Etapa 14: Miniatura social do site
+
+### Arquivos lidos antes da alteracao
+
+- `index.html`
+- `PROJECT_PROCESS.MD`
+- `PROJECT_STATUS.MD`
+- Listagem da pasta `assets`
+
+### Estado real encontrado
+
+O arquivo `assets/site-card-thumbnail.png` foi adicionado ao projeto com dimensoes de 1254x1254. A previa social ainda usava `assets/the-staff-preview.png` em `og:image`, `twitter:image` e no campo `image` do JSON-LD. A imagem antiga tambem era usada dentro da galeria visual da pagina.
+
+### Alteracao realizada
+
+- `og:image` passou a apontar para `https://truekatz.github.io/The-staff-landing-page/assets/site-card-thumbnail.png`.
+- Foi adicionada a tag `og:image:secure_url` com a mesma URL HTTPS.
+- Foi adicionada a tag `og:image:type` como `image/png`.
+- As dimensoes `og:image:width` e `og:image:height` foram atualizadas para 1254x1254.
+- `twitter:image` passou a usar a nova miniatura.
+- O campo `image` do JSON-LD passou a usar a nova miniatura.
+- A imagem antiga `assets/the-staff-preview.png` foi mantida na galeria visual do site, sem alteracao.
+
+### Simulacao e prevencao de regressao
+
+- A imagem foi validada localmente com leitura de dimensoes via `System.Drawing`.
+- A alteracao ficou restrita as tags de previa social e dados estruturados, reduzindo risco de quebrar layout.
+- O principal risco e cache de plataformas como Telegram, WhatsApp, Facebook e X/Twitter. Mesmo apos o deploy, elas podem continuar mostrando a miniatura antiga ate o cache expirar ou ser reprocessado por uma ferramenta de debug/scrape.
