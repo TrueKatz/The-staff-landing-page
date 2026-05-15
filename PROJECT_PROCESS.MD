@@ -427,3 +427,33 @@ Foram feitas as seguintes verificacoes:
 - Foi verificado o status Git antes do commit e push.
 
 O risco principal desta etapa e a faixa ficar lenta ou sutil demais. A configuracao atual prioriza reset invisivel e movimento limpo.
+
+## 2026-05-15 - Etapa 13: Preparacao do Meta Pixel para anuncios
+
+### Arquivos lidos antes da alteracao
+
+- `index.html`
+- `app.js`
+- `PROJECT_PROCESS.MD`
+- `PROJECT_STATUS.MD`
+
+### Estado real encontrado
+
+A landing page ja tinha CTAs para o bot oficial, contato flutuante no Telegram, SEO reforcado, galeria de provas, animacoes e publicacao pelo GitHub. Ainda nao havia rastreamento de anuncios, Meta Pixel, eventos de conversao ou ponto configuravel para inserir o ID do Pixel.
+
+### Alteracao realizada
+
+- Foi adicionado `window.THE_STAFF_META_PIXEL_ID` no HTML como ponto unico para inserir o ID do Meta Pixel.
+- Foi criado carregamento dinamico do Meta Pixel em `app.js`.
+- O Pixel fica inativo se o ID estiver vazio, evitando chamadas quebradas ou envio para conta errada.
+- Quando o ID for configurado, a pagina dispara `PageView` e `ViewContent`.
+- Cliques para `https://t.me/WardenControlBot` disparam evento `Lead`.
+- Cliques para `https://t.me/TrueKatz666` disparam evento `Contact`.
+- Os eventos recebem parametros de contexto, como origem da landing page, CTA clicado, categoria e valor mensal em USD.
+- Nao foi adicionado banner de consentimento, conforme solicitado.
+
+### Simulacao e prevencao de regressao
+
+- A implementacao foi feita com fallback: sem ID de Pixel, nenhuma biblioteca externa da Meta e carregada.
+- A logica de rastreamento usa os links ja existentes, entao nao muda o destino dos botoes.
+- O risco principal e legal/privacidade: ao ativar o Pixel sem banner, cookies de marketing podem ser gravados pelo Meta Pixel. Para reduzir risco operacional, ainda e recomendavel manter uma politica de privacidade explicando o uso de ferramentas de anuncios e mensuracao.

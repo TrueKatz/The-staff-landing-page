@@ -1,5 +1,8 @@
 const MONTHLY_PRICE_USD = 10;
 const RATE_REFRESH_MS = 5 * 60 * 1000;
+const BOT_TELEGRAM_URL = "https://t.me/WardenControlBot";
+const CONTACT_TELEGRAM_URL = "https://t.me/TrueKatz666";
+const META_PIXEL_FALLBACK_ID = "";
 
 const translations = {
   "pt-BR": {
@@ -485,6 +488,125 @@ const brlPrice = document.querySelector("#brl-price");
 const refreshRatesButton = document.querySelector("#refresh-rates");
 const currentYear = document.querySelector("#current-year");
 
+function getMetaPixelId() {
+  const configuredId = window.THE_STAFF_META_PIXEL_ID || META_PIXEL_FALLBACK_ID;
+
+  if (typeof configuredId !== "string") {
+    return "";
+  }
+
+  const pixelId = configuredId.trim();
+  const isPlaceholder = ["", "COLE_SEU_PIXEL_ID_AQUI", "YOUR_PIXEL_ID"].includes(pixelId);
+
+  return isPlaceholder ? "" : pixelId;
+}
+
+function createMetaEventId(eventName) {
+  const randomPart =
+    window.crypto && typeof window.crypto.randomUUID === "function"
+      ? window.crypto.randomUUID()
+      : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+
+  return `the-staff-${eventName.toLowerCase()}-${randomPart}`;
+}
+
+function trackMetaEvent(eventName, parameters = {}) {
+  if (!getMetaPixelId() || typeof window.fbq !== "function") {
+    return;
+  }
+
+  window.fbq(
+    "track",
+    eventName,
+    {
+      source: "the_staff_landing_page",
+      ...parameters
+    },
+    {
+      eventID: createMetaEventId(eventName)
+    }
+  );
+}
+
+function initMetaPixel() {
+  const pixelId = getMetaPixelId();
+
+  if (!pixelId || typeof window.fbq === "function") {
+    return;
+  }
+
+  (function loadMetaPixel(f, b, e, v, n, tElement, sElement) {
+    if (f.fbq) {
+      return;
+    }
+
+    n = f.fbq = function fbqQueue() {
+      n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+    };
+    if (!f._fbq) {
+      f._fbq = n;
+    }
+    n.push = n;
+    n.loaded = true;
+    n.version = "2.0";
+    n.queue = [];
+    tElement = b.createElement(e);
+    tElement.async = true;
+    tElement.src = v;
+    sElement = b.getElementsByTagName(e)[0];
+    sElement.parentNode.insertBefore(tElement, sElement);
+  })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+
+  window.fbq("init", pixelId);
+  trackMetaEvent("PageView", {
+    content_name: "The Staff landing page",
+    content_category: "Telegram moderation bot"
+  });
+  trackMetaEvent("ViewContent", {
+    content_name: "The Staff Telegram moderation bot",
+    content_category: "Telegram security bot",
+    content_ids: ["the-staff-pro"],
+    content_type: "product",
+    value: MONTHLY_PRICE_USD,
+    currency: "USD"
+  });
+}
+
+function normalizeUrl(url) {
+  return url.replace(/\/$/, "");
+}
+
+function getCtaText(link) {
+  return link.textContent.replace(/\s+/g, " ").trim();
+}
+
+function initAdClickTracking() {
+  document.querySelectorAll('a[href^="https://t.me/"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      const targetUrl = normalizeUrl(link.href);
+
+      if (targetUrl === BOT_TELEGRAM_URL) {
+        trackMetaEvent("Lead", {
+          content_name: "Open The Staff bot",
+          content_category: "Telegram bot trial",
+          cta_text: getCtaText(link),
+          value: MONTHLY_PRICE_USD,
+          currency: "USD"
+        });
+        return;
+      }
+
+      if (targetUrl === CONTACT_TELEGRAM_URL) {
+        trackMetaEvent("Contact", {
+          content_name: "Contact TrueKatz666 on Telegram",
+          content_category: "Telegram support contact",
+          cta_text: getCtaText(link)
+        });
+      }
+    });
+  });
+}
+
 function initScrollReveal() {
   const revealElements = Array.from(
     document.querySelectorAll(
@@ -673,5 +795,7 @@ refreshRatesButton.addEventListener("click", updateRates);
 currentYear.textContent = new Date().getFullYear();
 initScrollReveal();
 applyLanguage(activeLanguage);
+initMetaPixel();
+initAdClickTracking();
 updateRates();
 window.setInterval(updateRates, RATE_REFRESH_MS);

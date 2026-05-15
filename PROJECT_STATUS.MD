@@ -2,7 +2,7 @@
 
 ## Etapa atual
 
-Landing page estatica do The Staff com planos, CTAs, SEO reforcado, galeria de provas visuais reais de moderacao, contato flutuante no Telegram, animacoes profissionais e Git local conectado ao GitHub.
+Landing page estatica do The Staff com planos, CTAs, SEO reforcado, galeria de provas visuais reais de moderacao, contato flutuante no Telegram, animacoes profissionais, preparacao para Meta Pixel e Git local conectado ao GitHub.
 
 ## O que ja existe funcionando
 
@@ -36,6 +36,14 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, galeria de p
 - Reveals ao rolar a pagina usando `IntersectionObserver`.
 - Brilho discreto nos CTAs principais com loop lento e reset fora da area visivel.
 - Destaque rapido nos valores de cotacao quando XMR/BRL atualizam.
+- Ponto configuravel `window.THE_STAFF_META_PIXEL_ID` preparado para inserir o ID do Meta Pixel.
+- Carregamento do Meta Pixel preparado sem banner de consentimento, conforme decisao atual.
+- Pixel permanece inativo enquanto o ID estiver vazio.
+- Eventos preparados para anuncios Meta/Facebook:
+  - `PageView` ao abrir a landing page.
+  - `ViewContent` para visualizacao da oferta do The Staff.
+  - `Lead` ao clicar nos CTAs que abrem `https://t.me/WardenControlBot`.
+  - `Contact` ao clicar no balao flutuante para `https://t.me/TrueKatz666`.
 - Suporte a `prefers-reduced-motion` para reduzir movimento quando configurado no navegador/sistema.
 - Textos comerciais reforcados para explicar valor, reduzir friccao e incentivar teste/assinatura.
 - Textos principais em PT-BR revisados com acentuacao correta.
@@ -66,6 +74,9 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, galeria de p
 - Testar visualmente em navegador real antes de publicar.
 - Verificar no site publicado se o balao flutuante nao cobre CTAs importantes em telas pequenas.
 - Verificar no site publicado se as animacoes continuam discretas em mobile e nao distraem da conversao.
+- Inserir o ID real do Meta Pixel em `window.THE_STAFF_META_PIXEL_ID`.
+- Validar o Pixel no Meta Events Manager ou Meta Pixel Helper depois que o ID real estiver configurado.
+- Criar ou linkar uma politica de privacidade explicando uso de ferramentas de anuncios e cookies de marketing, ja que a decisao atual foi nao usar banner de consentimento.
 - Configurar Google Search Console apos o deploy.
 - Avaliar se sera necessario backend proprio no futuro para cachear cotacoes e reduzir dependencia direta de APIs publicas no navegador.
 
@@ -76,3 +87,5 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, galeria de p
 - A versao atual e uma primeira base organizada para validacao visual e textual.
 - A imagem principal e as provas agora aparecem fora do hero para evitar corte visual; validar no site publicado apos commit.
 - As capturas reais tem proporcoes diferentes da arte principal, entao a altura da secao visual deve ser revisada em mobile depois do deploy.
+- O Meta Pixel so passa a rastrear quando o ID real for inserido.
+- Sem banner de consentimento, a responsabilidade por transparencia e base legal fica concentrada na politica de privacidade e nas configuracoes de anuncios/cookies escolhidas pelo responsavel do site.
