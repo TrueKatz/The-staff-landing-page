@@ -569,3 +569,31 @@ O Pixel ja rastreava eventos principais: `PageView`, `ViewContent`, `Lead` para 
 
 - A correcao evita marcar clique interno como lead, mantendo a qualidade do funil.
 - O risco principal e confundir eventos customizados com conversao final. Para campanha, o evento mais importante continua sendo `Lead`; `InternalButtonClick` serve para diagnostico de navegacao dentro da pagina.
+
+## 2026-05-15 - Etapa 18: Nova previa de links em PT-BR
+
+### Arquivos lidos antes da alteracao
+
+- `index.html`
+- `PROJECT_PROCESS.MD`
+- `PROJECT_STATUS.MD`
+- Listagem da pasta `assets`
+
+### Estado real encontrado
+
+A previa de links ainda apontava para `assets/the-staff-preview.png`. O usuario adicionou uma nova imagem em `assets` com nome `ChatGPT Image 15 de mai. de 2026, 18_58_31.png`, contendo a arte em PT-BR para compartilhamento de link. O favicon continuava separado e nao precisava ser alterado.
+
+### Alteracao realizada
+
+- A imagem nova foi renomeada para `assets/the-staff-link-preview.png`, usando nome estavel sem espacos ou acentos.
+- Foram confirmadas as dimensoes da imagem: 1448x1086.
+- `og:image` e `og:image:secure_url` passaram a apontar para `https://truekatz.github.io/The-staff-landing-page/assets/the-staff-link-preview.png`.
+- `twitter:image` passou a usar a nova imagem.
+- O campo `image` do JSON-LD passou a usar a nova imagem.
+- A imagem `assets/the-staff-preview.png` foi mantida na galeria visual do site.
+
+### Simulacao e prevencao de regressao
+
+- A imagem foi validada localmente com `System.Drawing`.
+- A mudanca ficou restrita as tags de previa social e dados estruturados.
+- O risco principal e cache das plataformas sociais. Telegram, WhatsApp, Facebook e X/Twitter podem continuar mostrando a imagem antiga ate reprocessarem a URL.

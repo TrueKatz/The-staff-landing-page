@@ -24,9 +24,9 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, favicon dedi
   - `assets/prova-moderacao-visual-policy-warnings.png`
 - Galeria visual com legendas explicando bloqueio visual, advertencias progressivas e ban automatico.
 - Galeria visual com hover animado, leve elevacao e realce das imagens.
-- Tags sociais `og:image` e `twitter:image` usando a miniatura de link antiga `assets/the-staff-preview.png`.
+- Tags sociais `og:image` e `twitter:image` usando a nova previa de link em PT-BR `assets/the-staff-link-preview.png`.
 - `og:image` e `twitter:image` apontando para URL absoluta HTTPS do GitHub Pages.
-- JSON-LD usando `assets/the-staff-preview.png` como imagem principal estruturada.
+- JSON-LD usando `assets/the-staff-link-preview.png` como imagem principal estruturada.
 - Imagem `assets/site-card-thumbnail.png` usada como base do favicon/icone da aba.
 - Favicons gerados a partir da imagem nova:
   - `assets/favicon-32.png`
@@ -75,7 +75,7 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, favicon dedi
 ## O que ainda falta melhorar
 
 - Definir dominio final para adicionar `canonical`, `og:url` e `sitemap.xml`.
-- Manter a imagem real em `assets/the-staff-preview.png` para a secao visual e previa de link.
+- Manter `assets/the-staff-link-preview.png` para previa de link e `assets/the-staff-preview.png` para a galeria visual.
 - Aguardar o GitHub Pages finalizar o deploy apos cada push.
 - Atualizar as URLs absolutas de previa de link se o site ganhar dominio proprio no futuro.
 - Revisar textos finais de venda apos validacao visual e comercial do usuario.
