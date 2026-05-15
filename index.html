@@ -6,11 +6,11 @@
     <title>The Staff | Bot moderador Telegram, anti-spam e segurança para grupos</title>
     <meta
       name="description"
-      content="The Staff é um bot moderador Telegram para proteger grupos contra spam, flood, links suspeitos, bots, NSFW/GORE e tentativas de burlar regras."
+      content="The Staff é um bot moderador Telegram para proteger grupos contra spam, flood, links suspeitos, bots, NSFW/GORE, advertências e ban automático."
     >
     <meta
       name="keywords"
-      content="bot telegram, bots para telegram, bot moderador telegram, bot de moderação telegram, bot anti-spam telegram, bot para grupo telegram, moderação automática telegram, segurança para grupos telegram"
+      content="bot telegram, bots para telegram, bot moderador telegram, bot de moderação telegram, bot anti-spam telegram, bot para grupo telegram, moderação automática telegram, segurança para grupos telegram, moderação visual telegram, bot nsfw telegram, ban automático telegram, advertências telegram, bloqueio de links telegram"
     >
     <meta name="author" content="The Staff">
     <meta name="application-name" content="The Staff">
@@ -21,7 +21,7 @@
     <meta property="og:title" content="The Staff | Bot moderador Telegram">
     <meta
       property="og:description"
-      content="Bot de segurança e moderação automática para grupos Telegram: anti-spam, anti-flood, links suspeitos, captcha, NSFW/GORE e logs."
+      content="Bot de segurança e moderação automática para grupos Telegram: anti-spam, anti-flood, links suspeitos, captcha, NSFW/GORE, advertências e ban automático."
     >
     <meta property="og:image" content="assets/the-staff-preview.png">
     <meta property="og:image:alt" content="The Staff Telegram Security Bot protegendo grupos contra spam, links suspeitos, flood e NSFW/GORE.">
@@ -32,7 +32,7 @@
     <meta name="twitter:title" content="The Staff | Bot moderador Telegram">
     <meta
       name="twitter:description"
-      content="Proteja grupos Telegram contra spam, links suspeitos, flood, bots e conteúdo NSFW/GORE com moderação automática."
+      content="Proteja grupos Telegram contra spam, links suspeitos, flood, bots, NSFW/GORE, advertências e ban automático."
     >
     <meta name="twitter:image" content="assets/the-staff-preview.png">
     <meta name="twitter:image:alt" content="The Staff Telegram Security Bot protegendo grupos Telegram.">
@@ -44,8 +44,13 @@
         "name": "The Staff",
         "applicationCategory": "SecurityApplication",
         "operatingSystem": "Telegram",
-        "description": "The Staff e um bot moderador Telegram para proteger grupos contra spam, flood, links suspeitos, bots, NSFW/GORE e tentativas de burlar regras.",
+        "description": "The Staff e um bot moderador Telegram para proteger grupos contra spam, flood, links suspeitos, bots, NSFW/GORE, advertencias e ban automatico.",
         "image": "assets/the-staff-preview.png",
+        "screenshot": [
+          "assets/the-staff-preview.png",
+          "assets/prova-moderacao-link-telegram-ban.png",
+          "assets/prova-moderacao-visual-policy-warnings.png"
+        ],
         "offers": {
           "@type": "Offer",
           "price": "10.00",
@@ -84,6 +89,14 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Sim. O The Staff oferece trial gratis de 7 dias para testar recursos completos antes da assinatura PRO."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "O bot aplica advertencias e ban automatico?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sim. O The Staff pode aplicar advertencias progressivas e punicoes automaticas, incluindo ban, quando o usuario atinge o limite configurado pelo administrador."
             }
           }
         ]
@@ -202,22 +215,45 @@
       <section class="section-band visual-band">
         <div class="section-inner content-stack">
           <div class="section-heading compact">
-            <p class="eyebrow" data-i18n="visualEyebrow">Identidade visual</p>
-            <h2 data-i18n="visualTitle">The Staff como segurança automático do seu grupo Telegram.</h2>
+            <p class="eyebrow" data-i18n="visualEyebrow">Prova de eficiência</p>
+            <h2 data-i18n="visualTitle">O The Staff agindo dentro do Telegram, não só prometendo proteção.</h2>
             <p data-i18n="visualText">
-              A arte resume a proposta do bot: bloquear spam, remover links suspeitos,
-              detectar NSFW/GORE e reduzir flood antes que a comunidade perca o controle.
+              A galeria mostra a identidade do bot e prints reais de moderação: remoção de
+              mensagem, advertências progressivas e ban automático quando uma regra visual é violada.
             </p>
           </div>
-          <figure class="preview-figure">
-            <img
-              src="assets/the-staff-preview.png"
-              alt="The Staff Telegram Security Bot protegendo grupos contra spam, links suspeitos, flood e NSFW/GORE."
-              loading="lazy"
-              width="1460"
-              height="1080"
-            >
-          </figure>
+          <div class="proof-gallery" aria-label="Provas visuais de moderação do The Staff">
+            <figure class="preview-figure featured-proof">
+              <img
+                src="assets/the-staff-preview.png"
+                alt="The Staff Telegram Security Bot protegendo grupos contra spam, links suspeitos, flood e NSFW/GORE."
+                loading="lazy"
+                width="1460"
+                height="1080"
+              >
+              <figcaption data-i18n="visualMainCaption">The Staff: bot de segurança para grupos Telegram.</figcaption>
+            </figure>
+            <figure class="preview-figure">
+              <img
+                src="assets/prova-moderacao-link-telegram-ban.png"
+                alt="Print do The Staff removendo mensagem por violação de política visual em link Telegram e aplicando ban permanente após 3 advertências."
+                loading="lazy"
+                width="687"
+                height="243"
+              >
+              <figcaption data-i18n="visualProofOneCaption">Bloqueio visual com ban após 3 advertências.</figcaption>
+            </figure>
+            <figure class="preview-figure">
+              <img
+                src="assets/prova-moderacao-visual-policy-warnings.png"
+                alt="Print do bot moderador Telegram The Staff aplicando advertências 1/3, 2/3 e 3/3 por link com imagem de destino violando política visual."
+                loading="lazy"
+                width="765"
+                height="541"
+              >
+              <figcaption data-i18n="visualProofTwoCaption">Advertências progressivas e punição automática.</figcaption>
+            </figure>
+          </div>
         </div>
       </section>
 
@@ -587,6 +623,13 @@
               <p data-i18n="faqFiveAnswer">
                 Sim. O The Staff ajuda a reduzir spam, flood, links suspeitos e tentativas de
                 bypass em grupos pequenos, médios e grandes.
+              </p>
+            </details>
+            <details>
+              <summary data-i18n="faqSixQuestion">O bot aplica advertências e ban automático?</summary>
+              <p data-i18n="faqSixAnswer">
+                Sim. O The Staff pode aplicar advertências progressivas e punições automáticas,
+                incluindo ban, quando o usuário atinge o limite configurado pelo administrador.
               </p>
             </details>
           </div>

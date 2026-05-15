@@ -175,3 +175,115 @@ Foram feitas as seguintes verificacoes:
 - Foram verificadas as tags `og:image`, `twitter:image` e os blocos JSON-LD no HTML.
 - Foi confirmado que `assets/the-staff-preview.png` ainda nao existe no projeto. A imagem so aparecera de fato quando o arquivo real for salvo nesse caminho.
 - Nao foi adicionado `canonical`, `og:url` ou `sitemap.xml` definitivo porque o dominio final ainda nao foi definido.
+
+## 2026-05-15 - Etapa 6: Reposicionamento da imagem principal
+
+### Arquivos lidos antes da alteracao
+
+- `index.html`
+- `styles.css`
+- `app.js`
+- `PROJECT_PROCESS.MD`
+- `PROJECT_STATUS.MD`
+
+### Estado real encontrado
+
+A imagem `assets/the-staff-preview.png` estava sendo usada no hero como fundo do card direito. Visualmente ela ficava cortada e competia com o H1, embora continuasse adequada para previa social e SEO.
+
+### Alteracao realizada
+
+- O hero voltou a usar o painel visual de moderacao com risco controlado, eventos bloqueados e CTA de trial.
+- A imagem foi movida para uma secao propria chamada de identidade visual, logo apos o bloco de SEO.
+- A nova secao usa `img` real com `object-fit: contain`, preservando a proporcao da arte sem corte.
+- As tags `og:image` e `twitter:image` continuam apontando para a imagem.
+- Foram adicionadas traducoes PT-BR e EN-US para a nova secao visual.
+
+### Simulacao e prevencao de regressao
+
+Foram feitas as seguintes verificacoes:
+
+- `node --check .\app.js` passou sem erros de sintaxe.
+- Foram encontradas 197 chaves `data-i18n` no HTML, todas presentes nos dicionarios PT-BR e EN-US.
+- Foi verificado que o hero voltou a conter `.moderation-panel`.
+- Foi verificado que nao sobrou referencia CSS/HTML a `.hero-image` ou `.hero-media-card`.
+- A validacao visual manual no site publicado continua recomendada apos commit no GitHub.
+
+## 2026-05-15 - Etapa 7: Provas visuais reais e SEO de moderacao
+
+### Arquivos lidos antes da alteracao
+
+- `index.html`
+- `styles.css`
+- `app.js`
+- `PROJECT_PROCESS.MD`
+- `PROJECT_STATUS.MD`
+- Listagem de `assets`
+- Verificacao dos arquivos locais:
+  - `C:\Users\jogos\OneDrive\Imagens\Capturas de tela\Captura de tela 2026-05-15 121919.png`
+  - `C:\Users\jogos\OneDrive\Imagens\Capturas de tela\Captura de tela 2026-05-15 122753.png`
+
+### Estado real encontrado
+
+O site ja tinha uma secao visual propria com a imagem principal `assets/the-staff-preview.png`, mas ainda nao exibia provas reais de moderacao dentro do Telegram. O SEO ja mencionava bot moderador Telegram, anti-spam e seguranca, mas ainda podia reforcar termos ligados a advertencias, ban automatico, moderacao visual e bloqueio de links.
+
+### Alteracao realizada
+
+- As duas capturas reais foram copiadas para `assets` com nomes estaveis:
+  - `assets/prova-moderacao-link-telegram-ban.png`
+  - `assets/prova-moderacao-visual-policy-warnings.png`
+- A secao visual virou uma galeria de prova de eficiencia, com a imagem principal e as duas capturas lado a lado em desktop e empilhadas no mobile.
+- Foram adicionadas legendas para explicar rapidamente o que cada prova mostra.
+- Foram adicionados textos alternativos com termos naturais de SEO, como bot moderador Telegram, link Telegram, advertencias, ban automatico e politica visual.
+- A meta description e a meta keywords foram reforcadas com moderacao visual, bot NSFW Telegram, ban automatico, advertencias e bloqueio de links.
+- O JSON-LD de `SoftwareApplication` agora inclui uma lista de screenshots.
+- O FAQ ganhou uma pergunta sobre advertencias e ban automatico.
+- As novas legendas e a nova pergunta foram traduzidas para PT-BR e EN-US.
+
+### Simulacao e prevencao de regressao
+
+Foram feitas as seguintes verificacoes apos a alteracao:
+
+- `node --check .\app.js` passou sem erros de sintaxe.
+- Foram encontradas 202 chaves `data-i18n` no HTML, todas presentes nos dicionarios PT-BR e EN-US.
+- Foi confirmado que as duas imagens copiadas existem em `assets`.
+- Foi revisado que a galeria usa `object-fit: contain`, evitando corte das capturas.
+- Foi identificado que `assets/the-staff-preview.png` nao existe nesta copia local do workspace, embora o HTML continue apontando para ela. Se a imagem ja estiver no GitHub, basta manter o arquivo la; se nao, ela precisa ser enviada junto com as novas capturas.
+
+O risco principal desta etapa e visual: tres imagens com proporcoes muito diferentes podem deixar a secao alta em telas menores. Para reduzir esse risco, a galeria usa grid responsivo, `max-height` por imagem e empilha em uma coluna no mobile.
+
+## 2026-05-15 - Etapa 8: Configuracao Git e sincronizacao com GitHub
+
+### Arquivos lidos antes da alteracao
+
+- `PROJECT_PROCESS.MD`
+- `PROJECT_STATUS.MD`
+- Listagem da pasta do projeto
+- Verificacao de existencia de `.git` local
+- Verificacao de existencia de `C:\Users\jogos\.git`
+- `.gitignore`
+- `README.md`
+- `assets\README.md`
+
+### Estado real encontrado
+
+A pasta `Landing-Page` nao tinha um repositorio Git proprio. O Git estava subindo ate `C:\Users\jogos\.git`, tratando a pasta do usuario como repositorio pai, o que causava erro e risco de misturar arquivos fora do projeto. O repositorio remoto `https://github.com/TrueKatz/The-staff-landing-page` ja existia e tinha arquivos que nao estavam na copia local, incluindo `assets/the-staff-preview.png`.
+
+### Alteracao realizada
+
+- Foi criado um repositorio Git proprio dentro de `Landing-Page`.
+- O remoto `origin` foi configurado para `https://github.com/TrueKatz/The-staff-landing-page.git`.
+- A branch local `main` foi alinhada para rastrear `origin/main`.
+- Arquivos que existiam no GitHub mas estavam ausentes localmente foram restaurados, incluindo `assets/the-staff-preview.png`.
+- O arquivo `.gitignore` passou a ignorar `.edge-profile/`, evitando enviar perfil local de navegador para o GitHub.
+
+### Simulacao e prevencao de regressao
+
+Foram feitas as seguintes verificacoes:
+
+- Confirmado que `.git` agora existe dentro de `Landing-Page`.
+- Confirmado que `origin` aponta para o repositorio correto.
+- Confirmado que `main` rastreia `origin/main`.
+- Confirmado que `assets/the-staff-preview.png` existe localmente depois da restauracao.
+- A estrategia usada preserva arquivos remotos que nao estavam na pasta local, evitando apagamento acidental no proximo commit.
+
+O principal risco desta etapa era sobrescrever ou apagar arquivos do GitHub. Para prevenir isso, o historico remoto foi buscado antes de qualquer commit e os arquivos ausentes foram restaurados do remoto.

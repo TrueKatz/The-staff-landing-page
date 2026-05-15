@@ -5,9 +5,9 @@ const translations = {
   "pt-BR": {
     pageTitle: "The Staff | Bot moderador Telegram, anti-spam e segurança para grupos",
     metaDescription:
-      "The Staff é um bot moderador Telegram para proteger grupos contra spam, flood, links suspeitos, bots, NSFW/GORE e tentativas de burlar regras.",
+      "The Staff é um bot moderador Telegram para proteger grupos contra spam, flood, links suspeitos, bots, NSFW/GORE, advertências e ban automático.",
     metaKeywords:
-      "bot telegram, bots para telegram, bot moderador telegram, bot de moderação telegram, bot anti-spam telegram, bot para grupo telegram, moderação automática telegram, segurança para grupos telegram",
+      "bot telegram, bots para telegram, bot moderador telegram, bot de moderação telegram, bot anti-spam telegram, bot para grupo telegram, moderação automática telegram, segurança para grupos telegram, moderação visual telegram, bot nsfw telegram, ban automático telegram, advertências telegram, bloqueio de links telegram",
     navFeatures: "Recursos",
     navPricing: "Preço",
     navPlans: "Planos",
@@ -36,10 +36,13 @@ const translations = {
     seoTitle: "Bots para Telegram precisam de segurança real, não só comandos básicos.",
     seoText:
       "O The Staff funciona como bot anti-spam Telegram, bot de moderação para grupos e camada de segurança automática para comunidades que precisam bloquear flood, links suspeitos, bots, convites privados e conteúdo proibido com mais controle.",
-    visualEyebrow: "Identidade visual",
-    visualTitle: "The Staff como segurança automático do seu grupo Telegram.",
+    visualEyebrow: "Prova de eficiência",
+    visualTitle: "O The Staff agindo dentro do Telegram, não só prometendo proteção.",
     visualText:
-      "A arte resume a proposta do bot: bloquear spam, remover links suspeitos, detectar NSFW/GORE e reduzir flood antes que a comunidade perca o controle.",
+      "A galeria mostra a identidade do bot e prints reais de moderação: remoção de mensagem, advertências progressivas e ban automático quando uma regra visual é violada.",
+    visualMainCaption: "The Staff: bot de segurança para grupos Telegram.",
+    visualProofOneCaption: "Bloqueio visual com ban após 3 advertências.",
+    visualProofTwoCaption: "Advertências progressivas e punição automática.",
     problemEyebrow: "O problema",
     problemTitle: "Administrar manualmente fica pesado quando a comunidade cresce.",
     problemText:
@@ -114,6 +117,9 @@ const translations = {
     faqFiveQuestion: "Ele serve como bot anti-spam Telegram?",
     faqFiveAnswer:
       "Sim. O The Staff ajuda a reduzir spam, flood, links suspeitos e tentativas de bypass em grupos pequenos, médios e grandes.",
+    faqSixQuestion: "O bot aplica advertências e ban automático?",
+    faqSixAnswer:
+      "Sim. O The Staff pode aplicar advertências progressivas e punições automáticas, incluindo ban, quando o usuário atinge o limite configurado pelo administrador.",
     backTop: "Voltar ao topo",
     plansEyebrow: "Planos",
     plansTitle: "Escolha o nível de proteção certo para o seu grupo.",
@@ -225,9 +231,9 @@ const translations = {
   "en-US": {
     pageTitle: "Telegram group moderation bot | The Staff",
     metaDescription:
-      "The Staff: the ideal bot for anyone who wants to moderate a Telegram group or channel with the highest possible security.",
+      "The Staff is a Telegram moderation bot that protects groups from spam, flood, suspicious links, bots, NSFW/GORE, warnings and automatic bans.",
     metaKeywords:
-      "telegram bot, telegram bots, telegram moderator bot, telegram moderation bot, telegram anti-spam bot, telegram group bot, automatic telegram moderation, telegram group security",
+      "telegram bot, telegram bots, telegram moderator bot, telegram moderation bot, telegram anti-spam bot, telegram group bot, automatic telegram moderation, telegram group security, telegram visual moderation, telegram nsfw bot, telegram automatic ban, telegram warnings, telegram link blocking",
     navFeatures: "Features",
     navPricing: "Pricing",
     navPlans: "Plans",
@@ -256,10 +262,13 @@ const translations = {
     seoTitle: "Telegram bots need real security, not only basic commands.",
     seoText:
       "The Staff works as a Telegram anti-spam bot, group moderation bot and automatic security layer for communities that need to block flood, suspicious links, bots, private invites and forbidden content with more control.",
-    visualEyebrow: "Visual identity",
-    visualTitle: "The Staff as the automatic guard for your Telegram group.",
+    visualEyebrow: "Proof of efficiency",
+    visualTitle: "The Staff acting inside Telegram, not just promising protection.",
     visualText:
-      "The artwork summarizes the bot promise: block spam, remove suspicious links, detect NSFW/GORE and reduce flood before the community loses control.",
+      "The gallery shows the bot identity and real moderation screenshots: message removal, progressive warnings and automatic ban when a visual rule is violated.",
+    visualMainCaption: "The Staff: security bot for Telegram groups.",
+    visualProofOneCaption: "Visual blocking with ban after 3 warnings.",
+    visualProofTwoCaption: "Progressive warnings and automatic punishment.",
     problemEyebrow: "The problem",
     problemTitle: "Manual administration becomes heavy as the community grows.",
     problemText:
@@ -334,6 +343,9 @@ const translations = {
     faqFiveQuestion: "Does it work as a Telegram anti-spam bot?",
     faqFiveAnswer:
       "Yes. The Staff helps reduce spam, flood, suspicious links and bypass attempts in small, medium and large groups.",
+    faqSixQuestion: "Does the bot apply warnings and automatic bans?",
+    faqSixAnswer:
+      "Yes. The Staff can apply progressive warnings and automatic punishments, including bans, when the user reaches the limit configured by the administrator.",
     backTop: "Back to top",
     plansEyebrow: "Plans",
     plansTitle: "Choose the right protection level for your group.",

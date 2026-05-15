@@ -422,7 +422,17 @@ a {
   color: rgba(255, 255, 255, 0.72);
 }
 
+.proof-gallery {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
 .preview-figure {
+  display: grid;
+  align-content: start;
+  gap: 12px;
   margin: 0;
   padding: clamp(10px, 2vw, 18px);
   border: 1px solid rgba(118, 210, 196, 0.22);
@@ -431,12 +441,26 @@ a {
   box-shadow: 0 28px 80px rgba(0, 0, 0, 0.32);
 }
 
+.featured-proof {
+  grid-row: span 2;
+}
+
 .preview-figure img {
   display: block;
   width: 100%;
-  max-height: 760px;
+  max-height: 360px;
   object-fit: contain;
   border-radius: 6px;
+}
+
+.featured-proof img {
+  max-height: 760px;
+}
+
+.preview-figure figcaption {
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.92rem;
+  font-weight: 800;
 }
 
 .muted-band {
@@ -815,8 +839,13 @@ a {
   .pricing-grid,
   .split-section,
   .faq-layout,
-  .plans-grid {
+  .plans-grid,
+  .proof-gallery {
     grid-template-columns: 1fr;
+  }
+
+  .featured-proof {
+    grid-row: auto;
   }
 
   .hero {
