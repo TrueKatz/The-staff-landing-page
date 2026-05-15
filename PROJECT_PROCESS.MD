@@ -517,3 +517,28 @@ A imagem `assets/site-card-thumbnail.png` estava configurada como miniatura de l
 - Foram verificadas as dimensoes reais de `assets/the-staff-preview.png` e `assets/site-card-thumbnail.png`.
 - A correcao separa responsabilidades: imagem antiga para previa de link, imagem nova para icone da aba.
 - O risco principal e cache do navegador: a aba pode continuar mostrando o icone antigo ate recarregar forte ou limpar cache. Plataformas sociais tambem podem manter cache de previews por algum tempo.
+
+## 2026-05-15 - Etapa 16: Ativacao do Meta Pixel
+
+### Arquivos lidos antes da alteracao
+
+- `index.html`
+- `app.js`
+- `PROJECT_PROCESS.MD`
+- `PROJECT_STATUS.MD`
+
+### Estado real encontrado
+
+O Meta Pixel ja estava preparado em `app.js`, com carregamento dinamico e eventos `PageView`, `ViewContent`, `Lead` e `Contact`. O ID configuravel `window.THE_STAFF_META_PIXEL_ID` ainda estava vazio, entao o Pixel permanecia inativo e nenhuma biblioteca externa da Meta era carregada.
+
+### Alteracao realizada
+
+- O ID `1011943415090142` foi inserido em `window.THE_STAFF_META_PIXEL_ID`.
+- Foi adicionado fallback `noscript` oficial para registrar `PageView` quando JavaScript estiver desativado.
+- A estrutura dinamica existente continua responsavel por carregar `fbevents.js` e disparar os eventos de conversao quando JavaScript esta ativo.
+
+### Simulacao e prevencao de regressao
+
+- A alteracao foi limitada ao ponto de configuracao do Pixel e ao fallback `noscript`.
+- Nao foi duplicado o bloco completo do Pixel da Meta porque o projeto ja possui carregamento controlado em `app.js`.
+- O risco principal agora e privacidade/cookies de marketing, ja que o Pixel passa a carregar no site sem banner de consentimento, conforme decisao atual.

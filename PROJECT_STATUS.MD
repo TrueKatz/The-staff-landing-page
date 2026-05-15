@@ -43,9 +43,9 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, favicon dedi
 - Reveals ao rolar a pagina usando `IntersectionObserver`.
 - Brilho discreto nos CTAs principais com loop lento e reset fora da area visivel.
 - Destaque rapido nos valores de cotacao quando XMR/BRL atualizam.
-- Ponto configuravel `window.THE_STAFF_META_PIXEL_ID` preparado para inserir o ID do Meta Pixel.
-- Carregamento do Meta Pixel preparado sem banner de consentimento, conforme decisao atual.
-- Pixel permanece inativo enquanto o ID estiver vazio.
+- Ponto configuravel `window.THE_STAFF_META_PIXEL_ID` ativado com o ID `1011943415090142`.
+- Carregamento do Meta Pixel ativo sem banner de consentimento, conforme decisao atual.
+- Fallback `noscript` adicionado para `PageView` quando JavaScript estiver desativado.
 - Eventos preparados para anuncios Meta/Facebook:
   - `PageView` ao abrir a landing page.
   - `ViewContent` para visualizacao da oferta do The Staff.
@@ -81,7 +81,6 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, favicon dedi
 - Testar visualmente em navegador real antes de publicar.
 - Verificar no site publicado se o balao flutuante nao cobre CTAs importantes em telas pequenas.
 - Verificar no site publicado se as animacoes continuam discretas em mobile e nao distraem da conversao.
-- Inserir o ID real do Meta Pixel em `window.THE_STAFF_META_PIXEL_ID`.
 - Validar o Pixel no Meta Events Manager ou Meta Pixel Helper depois que o ID real estiver configurado.
 - Criar ou linkar uma politica de privacidade explicando uso de ferramentas de anuncios e cookies de marketing, ja que a decisao atual foi nao usar banner de consentimento.
 - Configurar Google Search Console apos o deploy.
@@ -96,5 +95,5 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, favicon dedi
 - As capturas reais tem proporcoes diferentes da arte principal, entao a altura da secao visual deve ser revisada em mobile depois do deploy.
 - Plataformas sociais podem manter cache de previews por algum tempo apos o deploy.
 - O navegador pode manter cache do favicon antigo; um recarregamento forte ou limpeza de cache pode ser necessario para ver o novo icone da aba.
-- O Meta Pixel so passa a rastrear quando o ID real for inserido.
+- O Meta Pixel agora carrega no site publicado apos o deploy e depende de validacao no Meta Events Manager.
 - Sem banner de consentimento, a responsabilidade por transparencia e base legal fica concentrada na politica de privacidade e nas configuracoes de anuncios/cookies escolhidas pelo responsavel do site.
