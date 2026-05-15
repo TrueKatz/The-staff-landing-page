@@ -2,7 +2,7 @@
 
 ## Etapa atual
 
-Landing page estatica do The Staff com planos, CTAs, SEO reforcado, miniatura social dedicada, galeria de provas visuais reais de moderacao, contato flutuante no Telegram, animacoes profissionais, preparacao para Meta Pixel e Git local conectado ao GitHub.
+Landing page estatica do The Staff com planos, CTAs, SEO reforcado, favicon dedicado, galeria de provas visuais reais de moderacao, contato flutuante no Telegram, animacoes profissionais, preparacao para Meta Pixel e Git local conectado ao GitHub.
 
 ## O que ja existe funcionando
 
@@ -24,9 +24,14 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, miniatura so
   - `assets/prova-moderacao-visual-policy-warnings.png`
 - Galeria visual com legendas explicando bloqueio visual, advertencias progressivas e ban automatico.
 - Galeria visual com hover animado, leve elevacao e realce das imagens.
-- Tags sociais `og:image` e `twitter:image` usando a miniatura dedicada `assets/site-card-thumbnail.png`.
+- Tags sociais `og:image` e `twitter:image` usando a miniatura de link antiga `assets/the-staff-preview.png`.
 - `og:image` e `twitter:image` apontando para URL absoluta HTTPS do GitHub Pages.
-- JSON-LD usando `assets/site-card-thumbnail.png` como imagem principal estruturada.
+- JSON-LD usando `assets/the-staff-preview.png` como imagem principal estruturada.
+- Imagem `assets/site-card-thumbnail.png` usada como base do favicon/icone da aba.
+- Favicons gerados a partir da imagem nova:
+  - `assets/favicon-32.png`
+  - `assets/favicon-192.png`
+  - `assets/apple-touch-icon.png`
 - Titulo, meta description e conteudo reforcados para buscas como bot moderador Telegram, bots para Telegram, bot anti-spam Telegram, moderacao visual Telegram, advertencias Telegram e ban automatico Telegram.
 - Dados estruturados JSON-LD para `SoftwareApplication` e `FAQPage`, incluindo lista de screenshots.
 - Secao textual adicional com termos de SEO usados de forma natural.
@@ -69,9 +74,9 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, miniatura so
 ## O que ainda falta melhorar
 
 - Definir dominio final para adicionar `canonical`, `og:url` e `sitemap.xml`.
-- Manter a imagem real em `assets/the-staff-preview.png` para a secao visual e previa social.
+- Manter a imagem real em `assets/the-staff-preview.png` para a secao visual e previa de link.
 - Aguardar o GitHub Pages finalizar o deploy apos cada push.
-- Atualizar a URL absoluta da miniatura social se o site ganhar dominio proprio no futuro.
+- Atualizar as URLs absolutas de previa de link se o site ganhar dominio proprio no futuro.
 - Revisar textos finais de venda apos validacao visual e comercial do usuario.
 - Testar visualmente em navegador real antes de publicar.
 - Verificar no site publicado se o balao flutuante nao cobre CTAs importantes em telas pequenas.
@@ -89,6 +94,7 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, miniatura so
 - A versao atual e uma primeira base organizada para validacao visual e textual.
 - A imagem principal e as provas agora aparecem fora do hero para evitar corte visual; validar no site publicado apos commit.
 - As capturas reais tem proporcoes diferentes da arte principal, entao a altura da secao visual deve ser revisada em mobile depois do deploy.
-- Plataformas sociais podem manter cache da miniatura antiga por algum tempo apos o deploy.
+- Plataformas sociais podem manter cache de previews por algum tempo apos o deploy.
+- O navegador pode manter cache do favicon antigo; um recarregamento forte ou limpeza de cache pode ser necessario para ver o novo icone da aba.
 - O Meta Pixel so passa a rastrear quando o ID real for inserido.
 - Sem banner de consentimento, a responsabilidade por transparencia e base legal fica concentrada na politica de privacidade e nas configuracoes de anuncios/cookies escolhidas pelo responsavel do site.

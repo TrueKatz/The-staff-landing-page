@@ -486,3 +486,34 @@ O arquivo `assets/site-card-thumbnail.png` foi adicionado ao projeto com dimenso
 - A imagem foi validada localmente com leitura de dimensoes via `System.Drawing`.
 - A alteracao ficou restrita as tags de previa social e dados estruturados, reduzindo risco de quebrar layout.
 - O principal risco e cache de plataformas como Telegram, WhatsApp, Facebook e X/Twitter. Mesmo apos o deploy, elas podem continuar mostrando a miniatura antiga ate o cache expirar ou ser reprocessado por uma ferramenta de debug/scrape.
+
+## 2026-05-15 - Etapa 15: Separacao entre miniatura de link e icone da aba
+
+### Arquivos lidos antes da alteracao
+
+- `index.html`
+- `PROJECT_PROCESS.MD`
+- `PROJECT_STATUS.MD`
+- Listagem da pasta `assets`
+
+### Estado real encontrado
+
+A imagem `assets/site-card-thumbnail.png` estava configurada como miniatura de link em `og:image`, `twitter:image` e no campo `image` do JSON-LD. Nao havia favicon configurado no HTML. A imagem antiga `assets/the-staff-preview.png` continuava existindo e era a miniatura correta para previews de link.
+
+### Alteracao realizada
+
+- A previa de link voltou a usar `assets/the-staff-preview.png` por URL absoluta HTTPS.
+- `og:image:secure_url`, `twitter:image` e o campo `image` do JSON-LD tambem voltaram para a imagem antiga.
+- As dimensoes de `og:image` foram ajustadas para o tamanho real local de `assets/the-staff-preview.png`: 1448x1086.
+- A imagem nova `assets/site-card-thumbnail.png` passou a ser usada como base do icone do site.
+- Foram gerados favicons otimizados:
+  - `assets/favicon-32.png`
+  - `assets/favicon-192.png`
+  - `assets/apple-touch-icon.png`
+- Foram adicionadas tags `rel="icon"` e `rel="apple-touch-icon"` no `<head>`.
+
+### Simulacao e prevencao de regressao
+
+- Foram verificadas as dimensoes reais de `assets/the-staff-preview.png` e `assets/site-card-thumbnail.png`.
+- A correcao separa responsabilidades: imagem antiga para previa de link, imagem nova para icone da aba.
+- O risco principal e cache do navegador: a aba pode continuar mostrando o icone antigo ate recarregar forte ou limpar cache. Plataformas sociais tambem podem manter cache de previews por algum tempo.
