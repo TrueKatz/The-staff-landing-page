@@ -394,3 +394,36 @@ Foram feitas as seguintes verificacoes:
 - Foi verificado o status Git antes do commit e push.
 
 O risco principal desta etapa e o brilho ficar chamativo demais. Para reduzir isso, o gradiente usa baixa opacidade e movimento lento.
+
+## 2026-05-15 - Etapa 12: Reset invisivel no brilho dos CTAs
+
+### Arquivos lidos antes da alteracao
+
+- `styles.css`
+- `PROJECT_PROCESS.MD`
+- `PROJECT_STATUS.MD`
+- Status Git da pasta do projeto
+
+### Estado real encontrado
+
+O brilho dos CTAs estava em loop lento, mas ainda usava `repeating-linear-gradient` com `background-position`. Na pratica, o reset do background podia ficar perceptivel, parecendo que a animacao sumia ou saltava antes de concluir visualmente o ciclo.
+
+### Alteracao realizada
+
+- O brilho voltou a usar uma faixa unica em pseudo-elemento.
+- A faixa comeca fora da esquerda do botao e atravessa ate sair completamente pela direita.
+- O reset agora acontece no ponto em que a faixa esta invisivel fora do botao.
+- A animacao foi ajustada para `7.2s linear infinite`, mantendo o movimento lento.
+- A opacidade entra e sai apenas nas extremidades do ciclo, evitando corte brusco no meio do botao.
+
+### Simulacao e prevencao de regressao
+
+Foram feitas as seguintes verificacoes:
+
+- Foi verificado que `ctaShine` usa `translateX(360%)` no fim do ciclo.
+- Foi confirmado que a faixa unica usa `left: -48%` e `width: 42%`, comecando fora da esquerda.
+- Foi confirmado que a animacao roda em `7.2s linear infinite`.
+- `git diff --check` nao encontrou problemas de espaco ou quebras invalidas; exibiu apenas avisos normais de LF/CRLF do Windows.
+- Foi verificado o status Git antes do commit e push.
+
+O risco principal desta etapa e a faixa ficar lenta ou sutil demais. A configuracao atual prioriza reset invisivel e movimento limpo.
