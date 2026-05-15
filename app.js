@@ -3,6 +3,24 @@ const RATE_REFRESH_MS = 5 * 60 * 1000;
 const BOT_TELEGRAM_URL = "https://t.me/WardenControlBot";
 const CONTACT_TELEGRAM_URL = "https://t.me/TrueKatz666";
 const META_PIXEL_FALLBACK_ID = "";
+const SITE_BASE_URL = "https://truekatz.github.io/The-staff-landing-page/";
+
+const previewImages = {
+  "pt-BR": {
+    src: "assets/the-staff-link-preview.png",
+    alt:
+      "The Staff Bot de Segurança para Telegram protegendo grupos contra spam, links suspeitos, flood, ataques de bots e conteúdo NSFW/GORE.",
+    width: 1448,
+    height: 1086
+  },
+  "en-US": {
+    src: "assets/the-staff-preview.png",
+    alt:
+      "The Staff Telegram Security Bot protecting groups from spam, suspicious links, flood, bot raids and NSFW/GORE content.",
+    width: 1448,
+    height: 1086
+  }
+};
 
 const translations = {
   "pt-BR": {
@@ -487,6 +505,7 @@ const xmrPrice = document.querySelector("#xmr-price");
 const brlPrice = document.querySelector("#brl-price");
 const refreshRatesButton = document.querySelector("#refresh-rates");
 const currentYear = document.querySelector("#current-year");
+const mainPreviewImage = document.querySelector("#main-preview-image");
 
 function getMetaPixelId() {
   const configuredId = window.THE_STAFF_META_PIXEL_ID || META_PIXEL_FALLBACK_ID;
@@ -722,6 +741,34 @@ function setProperty(property, content) {
   }
 }
 
+function getPreviewImage(language) {
+  return previewImages[language] || previewImages["pt-BR"];
+}
+
+function getAbsoluteAssetUrl(src) {
+  return new URL(src, SITE_BASE_URL).href;
+}
+
+function updatePreviewImage() {
+  const previewImage = getPreviewImage(activeLanguage);
+  const previewImageUrl = getAbsoluteAssetUrl(previewImage.src);
+
+  if (mainPreviewImage) {
+    mainPreviewImage.src = previewImage.src;
+    mainPreviewImage.alt = previewImage.alt;
+    mainPreviewImage.width = previewImage.width;
+    mainPreviewImage.height = previewImage.height;
+  }
+
+  setProperty("og:image", previewImageUrl);
+  setProperty("og:image:secure_url", previewImageUrl);
+  setProperty("og:image:alt", previewImage.alt);
+  setProperty("og:image:width", String(previewImage.width));
+  setProperty("og:image:height", String(previewImage.height));
+  setMeta("twitter:image", previewImageUrl);
+  setMeta("twitter:image:alt", previewImage.alt);
+}
+
 function applyLanguage(language) {
   activeLanguage = translations[language] ? language : "pt-BR";
   storeLanguage(activeLanguage);
@@ -747,6 +794,7 @@ function applyLanguage(language) {
   setProperty("og:description", t("metaDescription"));
   setProperty("og:locale", activeLanguage === "pt-BR" ? "pt_BR" : "en_US");
 
+  updatePreviewImage();
   updateUsdPrice();
 }
 

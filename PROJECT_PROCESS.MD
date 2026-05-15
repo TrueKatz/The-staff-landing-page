@@ -597,3 +597,31 @@ A previa de links ainda apontava para `assets/the-staff-preview.png`. O usuario 
 - A imagem foi validada localmente com `System.Drawing`.
 - A mudanca ficou restrita as tags de previa social e dados estruturados.
 - O risco principal e cache das plataformas sociais. Telegram, WhatsApp, Facebook e X/Twitter podem continuar mostrando a imagem antiga ate reprocessarem a URL.
+
+## 2026-05-15 - Etapa 19: Imagem visual alternando por idioma
+
+### Arquivos lidos antes da alteracao
+
+- `index.html`
+- `app.js`
+- `PROJECT_PROCESS.MD`
+- `PROJECT_STATUS.MD`
+- Listagem da pasta `assets`
+
+### Estado real encontrado
+
+A pagina tinha seletor PT-BR/EN-US para textos, mas a imagem principal da galeria visual permanecia fixa em `assets/the-staff-preview.png`, com textos em ingles. A previa de link estatica ja usava `assets/the-staff-link-preview.png`, imagem em portugues. As duas imagens existem em `assets`.
+
+### Alteracao realizada
+
+- A imagem principal da galeria passou a iniciar em PT-BR com `assets/the-staff-link-preview.png`.
+- Foi adicionado `id="main-preview-image"` ao `img` principal da galeria.
+- Foi criado o mapa `previewImages` em `app.js`, com versoes PT-BR e EN-US.
+- `applyLanguage()` agora chama `updatePreviewImage()` para trocar imagem, texto alternativo, largura e altura conforme o idioma ativo.
+- As metas sociais `og:image`, `og:image:secure_url`, `og:image:alt`, `og:image:width`, `og:image:height`, `twitter:image` e `twitter:image:alt` tambem sao atualizadas em runtime quando o usuario troca idioma.
+
+### Simulacao e prevencao de regressao
+
+- A mudanca preserva a previa estatica inicial em PT-BR para robos de redes sociais, porque redes sociais geralmente nao executam JavaScript nem troca de idioma.
+- A imagem em EN-US continua disponivel para a galeria quando o usuario seleciona ingles.
+- O risco principal e cache no navegador ou em plataformas sociais. A troca dentro da pagina depende de JavaScript ativo, assim como o seletor de idioma ja dependia.
