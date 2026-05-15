@@ -2,7 +2,7 @@
 
 ## Etapa atual
 
-Landing page estatica do The Staff com planos, CTAs, SEO reforcado, galeria de provas visuais reais de moderacao e Git local conectado ao GitHub.
+Landing page estatica do The Staff com planos, CTAs, SEO reforcado, galeria de provas visuais reais de moderacao, contato flutuante no Telegram e Git local conectado ao GitHub.
 
 ## O que ja existe funcionando
 
@@ -12,6 +12,8 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, galeria de p
 - Botao de trial no painel direito do hero.
 - CTA final no rodape apontando para o bot.
 - Links de contratacao apontando para `https://t.me/WardenControlBot`.
+- Balao flutuante de contato apontando para `https://t.me/TrueKatz666`.
+- Balao flutuante acompanha o scroll por `position: fixed` e fica compacto no mobile.
 - Hero usando painel visual de moderacao, sem a imagem grande cortada.
 - Imagem `assets/the-staff-preview.png` exibida em secao propria de prova visual.
 - Capturas reais de moderacao adicionadas como prova de eficiencia:
@@ -44,7 +46,7 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, galeria de p
 - Ultimo push para GitHub realizado com sucesso na branch `main`.
 - `.gitignore` ignorando `.edge-profile/`.
 - JavaScript validado com `node --check`.
-- Chaves de idioma verificadas: 202 chaves no HTML com traducoes em PT-BR e EN-US.
+- Chaves de idioma verificadas: 203 chaves no HTML com traducoes em PT-BR e EN-US.
 
 ## O que ainda falta melhorar
 
@@ -54,6 +56,7 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, galeria de p
 - Definir URL absoluta da imagem apos o dominio final, porque algumas redes sociais exigem URL absoluta em `og:image`.
 - Revisar textos finais de venda apos validacao visual e comercial do usuario.
 - Testar visualmente em navegador real antes de publicar.
+- Verificar no site publicado se o balao flutuante nao cobre CTAs importantes em telas pequenas.
 - Configurar Google Search Console apos o deploy.
 - Avaliar se sera necessario backend proprio no futuro para cachear cotacoes e reduzir dependencia direta de APIs publicas no navegador.
 

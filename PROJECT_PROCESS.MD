@@ -290,3 +290,38 @@ Foram feitas as seguintes verificacoes:
 - Confirmado que o push para `https://github.com/TrueKatz/The-staff-landing-page` foi aceito pelo GitHub.
 
 O principal risco desta etapa era sobrescrever ou apagar arquivos do GitHub. Para prevenir isso, o historico remoto foi buscado antes de qualquer commit e os arquivos ausentes foram restaurados do remoto.
+
+## 2026-05-15 - Etapa 9: Balao flutuante de contato no Telegram
+
+### Arquivos lidos antes da alteracao
+
+- `index.html`
+- `styles.css`
+- `app.js`
+- `PROJECT_PROCESS.MD`
+- `PROJECT_STATUS.MD`
+- Status Git da pasta do projeto
+
+### Estado real encontrado
+
+A landing page ja tinha CTAs para iniciar o bot `WardenControlBot`, mas nao tinha um contato direto e persistente para o responsavel pelo projeto. O site ja estava conectado ao GitHub, com branch `main` rastreando `origin/main`.
+
+### Alteracao realizada
+
+- Foi adicionado um balao flutuante fixo no canto inferior direito da pagina.
+- O balao usa identidade visual do Telegram, com icone em SVG e texto curto.
+- O link aponta para `https://t.me/TrueKatz666`.
+- No desktop, o botao mostra o icone e o texto "Fale comigo".
+- No mobile, o texto fica acessivel, mas visualmente oculto, deixando apenas o icone para nao ocupar espaco.
+- A chamada foi adicionada em PT-BR e EN-US.
+
+### Simulacao e prevencao de regressao
+
+Foram feitas as seguintes verificacoes:
+
+- `node --check .\app.js` passou sem erros de sintaxe.
+- Foram encontradas 203 chaves `data-i18n` no HTML, todas presentes nos dicionarios PT-BR e EN-US.
+- Foi confirmado que o link `https://t.me/TrueKatz666` aparece no HTML.
+- Foi verificado o status Git antes do commit e push.
+
+O risco principal desta etapa e o balao cobrir conteudo em telas pequenas. Para reduzir isso, no mobile o texto e ocultado visualmente e o botao fica compacto no canto inferior direito.

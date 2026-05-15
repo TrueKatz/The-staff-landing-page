@@ -823,6 +823,55 @@ a {
   margin: 0;
 }
 
+.telegram-float {
+  position: fixed;
+  right: clamp(16px, 3vw, 30px);
+  bottom: clamp(18px, 4vw, 32px);
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 58px;
+  padding: 10px 16px 10px 10px;
+  border-radius: 999px;
+  color: #fff;
+  background: #229ed9;
+  box-shadow: 0 18px 45px rgba(34, 158, 217, 0.35);
+  font-weight: 900;
+  line-height: 1;
+  transition:
+    box-shadow 180ms ease,
+    transform 180ms ease,
+    background 180ms ease;
+}
+
+.telegram-float:hover,
+.telegram-float:focus-visible {
+  background: #178fca;
+  box-shadow: 0 24px 58px rgba(34, 158, 217, 0.46);
+  transform: translateY(-3px);
+}
+
+.telegram-float-icon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.telegram-float svg {
+  width: 23px;
+  height: 23px;
+  fill: currentColor;
+}
+
+.telegram-float-text {
+  font-size: 0.92rem;
+  white-space: nowrap;
+}
+
 @media (max-width: 900px) {
   .site-header {
     align-items: flex-start;
@@ -913,5 +962,22 @@ a {
 
   .footer-cta {
     width: 100%;
+  }
+
+  .telegram-float {
+    right: 14px;
+    bottom: 14px;
+    min-height: 54px;
+    padding: 8px;
+  }
+
+  .telegram-float-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
   }
 }
