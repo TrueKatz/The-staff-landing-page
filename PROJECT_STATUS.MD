@@ -34,7 +34,7 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, galeria de p
 - Cards de recursos com explicacao breve de cada funcao.
 - Efeito de sombra/elevacao ao passar o mouse nos cards de recursos e planos.
 - Reveals ao rolar a pagina usando `IntersectionObserver`.
-- Brilho discreto nos CTAs principais.
+- Brilho discreto nos CTAs principais com loop lento e continuo.
 - Destaque rapido nos valores de cotacao quando XMR/BRL atualizam.
 - Suporte a `prefers-reduced-motion` para reduzir movimento quando configurado no navegador/sistema.
 - Textos comerciais reforcados para explicar valor, reduzir friccao e incentivar teste/assinatura.

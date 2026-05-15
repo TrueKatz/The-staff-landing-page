@@ -363,3 +363,34 @@ Foram feitas as seguintes verificacoes:
 - Foram localizadas as novas regras de animacao e funcoes (`initScrollReveal`, `flashRateValues`, `reveal-on-scroll`, `prefers-reduced-motion`).
 
 O risco principal desta etapa e excesso de movimento prejudicar percepcao de confianca ou experiencia em celular. Para reduzir isso, as animacoes foram mantidas curtas, sutis e com fallback para `prefers-reduced-motion`.
+
+## 2026-05-15 - Etapa 11: Loop lento no brilho dos CTAs
+
+### Arquivos lidos antes da alteracao
+
+- `styles.css`
+- `PROJECT_PROCESS.MD`
+- `PROJECT_STATUS.MD`
+- Status Git da pasta do projeto
+
+### Estado real encontrado
+
+Os CTAs principais ja tinham brilho animado, mas a animacao usava uma faixa estreita que atravessava o botao e ficava invisivel em parte do ciclo. Visualmente, isso dava a impressao de que a animacao sumia do nada.
+
+### Alteracao realizada
+
+- O `@keyframes ctaShine` foi alterado para animar `background-position`.
+- A faixa unica foi trocada por um `repeating-linear-gradient`, mantendo brilho visivel em loop.
+- O tempo da animacao foi ajustado para 9 segundos em `linear infinite`, criando um movimento mais lento e continuo.
+
+### Simulacao e prevencao de regressao
+
+Foram feitas as seguintes verificacoes:
+
+- Foi verificado que `ctaShine` ainda existe em `styles.css`.
+- Foi confirmado que o brilho usa `repeating-linear-gradient`.
+- Foi confirmado que a animacao roda em `9s linear infinite`.
+- `git diff --check` nao encontrou problemas de espaco ou quebras invalidas; exibiu apenas avisos normais de LF/CRLF do Windows.
+- Foi verificado o status Git antes do commit e push.
+
+O risco principal desta etapa e o brilho ficar chamativo demais. Para reduzir isso, o gradiente usa baixa opacidade e movimento lento.
