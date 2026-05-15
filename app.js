@@ -528,6 +528,24 @@ function trackMetaEvent(eventName, parameters = {}) {
   );
 }
 
+function trackMetaCustomEvent(eventName, parameters = {}) {
+  if (!getMetaPixelId() || typeof window.fbq !== "function") {
+    return;
+  }
+
+  window.fbq(
+    "trackCustom",
+    eventName,
+    {
+      source: "the_staff_landing_page",
+      ...parameters
+    },
+    {
+      eventID: createMetaEventId(eventName)
+    }
+  );
+}
+
 function initMetaPixel() {
   const pixelId = getMetaPixelId();
 
@@ -603,6 +621,34 @@ function initAdClickTracking() {
           cta_text: getCtaText(link)
         });
       }
+    });
+  });
+}
+
+function initInternalClickTracking() {
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      const destination = link.getAttribute("href");
+
+      if (!destination || destination === "#") {
+        return;
+      }
+
+      trackMetaCustomEvent("InternalButtonClick", {
+        content_name: "Internal landing page click",
+        content_category: "Landing page navigation",
+        cta_text: getCtaText(link),
+        destination
+      });
+    });
+  });
+
+  refreshRatesButton.addEventListener("click", () => {
+    trackMetaCustomEvent("InternalButtonClick", {
+      content_name: "Refresh pricing rates",
+      content_category: "Pricing interaction",
+      cta_text: getCtaText(refreshRatesButton),
+      destination: "#preco"
     });
   });
 }
@@ -797,5 +843,6 @@ initScrollReveal();
 applyLanguage(activeLanguage);
 initMetaPixel();
 initAdClickTracking();
+initInternalClickTracking();
 updateRates();
 window.setInterval(updateRates, RATE_REFRESH_MS);

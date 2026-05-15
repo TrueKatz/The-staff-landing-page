@@ -51,6 +51,7 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, favicon dedi
   - `ViewContent` para visualizacao da oferta do The Staff.
   - `Lead` ao clicar nos CTAs que abrem `https://t.me/WardenControlBot`.
   - `Contact` ao clicar no balao flutuante para `https://t.me/TrueKatz666`.
+  - `InternalButtonClick` ao clicar em botoes internos como planos, recursos, preco, FAQ, topo e atualizar cotacao.
 - Suporte a `prefers-reduced-motion` para reduzir movimento quando configurado no navegador/sistema.
 - Textos comerciais reforcados para explicar valor, reduzir friccao e incentivar teste/assinatura.
 - Textos principais em PT-BR revisados com acentuacao correta.
@@ -82,6 +83,7 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, favicon dedi
 - Verificar no site publicado se o balao flutuante nao cobre CTAs importantes em telas pequenas.
 - Verificar no site publicado se as animacoes continuam discretas em mobile e nao distraem da conversao.
 - Validar o Pixel no Meta Events Manager ou Meta Pixel Helper depois que o ID real estiver configurado.
+- Confirmar na aba de eventos de teste se `InternalButtonClick` aparece ao clicar em botoes internos.
 - Criar ou linkar uma politica de privacidade explicando uso de ferramentas de anuncios e cookies de marketing, ja que a decisao atual foi nao usar banner de consentimento.
 - Configurar Google Search Console apos o deploy.
 - Avaliar se sera necessario backend proprio no futuro para cachear cotacoes e reduzir dependencia direta de APIs publicas no navegador.

@@ -542,3 +542,30 @@ O Meta Pixel ja estava preparado em `app.js`, com carregamento dinamico e evento
 - A alteracao foi limitada ao ponto de configuracao do Pixel e ao fallback `noscript`.
 - Nao foi duplicado o bloco completo do Pixel da Meta porque o projeto ja possui carregamento controlado em `app.js`.
 - O risco principal agora e privacidade/cookies de marketing, ja que o Pixel passa a carregar no site sem banner de consentimento, conforme decisao atual.
+
+## 2026-05-15 - Etapa 17: Rastreamento de cliques internos no Pixel
+
+### Arquivos lidos antes da alteracao
+
+- `app.js`
+- `index.html`
+- `PROJECT_PROCESS.MD`
+- `PROJECT_STATUS.MD`
+
+### Estado real encontrado
+
+O Pixel ja rastreava eventos principais: `PageView`, `ViewContent`, `Lead` para cliques no bot do Telegram e `Contact` para o contato direto. Os botoes internos da landing page, como `#planos`, `#recursos`, `#preco`, `#faq` e `#top`, apenas navegavam/rolavam a pagina e nao disparavam evento proprio no Pixel.
+
+### Alteracao realizada
+
+- Foi criada a funcao `trackMetaCustomEvent` usando `fbq("trackCustom", ...)`.
+- Foi adicionada a funcao `initInternalClickTracking`.
+- Cliques em links internos `href="#..."` agora disparam o evento customizado `InternalButtonClick`.
+- O evento envia o texto do botao (`cta_text`) e o destino interno (`destination`).
+- O botao de atualizar cotacao tambem dispara `InternalButtonClick` com destino `#preco`.
+- O evento `Lead` foi preservado apenas para cliques que abrem `https://t.me/WardenControlBot`.
+
+### Simulacao e prevencao de regressao
+
+- A correcao evita marcar clique interno como lead, mantendo a qualidade do funil.
+- O risco principal e confundir eventos customizados com conversao final. Para campanha, o evento mais importante continua sendo `Lead`; `InternalButtonClick` serve para diagnostico de navegacao dentro da pagina.
