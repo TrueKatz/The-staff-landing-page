@@ -41,6 +41,7 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, galeria de p
 - Repositorio Git proprio criado dentro da pasta `Landing-Page`.
 - Remoto `origin` configurado para `https://github.com/TrueKatz/The-staff-landing-page.git`.
 - Branch local `main` configurada para rastrear `origin/main`.
+- Ultimo push para GitHub realizado com sucesso na branch `main`.
 - `.gitignore` ignorando `.edge-profile/`.
 - JavaScript validado com `node --check`.
 - Chaves de idioma verificadas: 202 chaves no HTML com traducoes em PT-BR e EN-US.
@@ -49,7 +50,7 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, galeria de p
 
 - Definir dominio final para adicionar `canonical`, `og:url` e `sitemap.xml`.
 - Manter a imagem real em `assets/the-staff-preview.png` para a secao visual e previa social.
-- Fazer push do commit atual para o GitHub sempre que uma rodada de alteracao for finalizada.
+- Aguardar o GitHub Pages finalizar o deploy apos cada push.
 - Definir URL absoluta da imagem apos o dominio final, porque algumas redes sociais exigem URL absoluta em `og:image`.
 - Revisar textos finais de venda apos validacao visual e comercial do usuario.
 - Testar visualmente em navegador real antes de publicar.

@@ -275,6 +275,8 @@ A pasta `Landing-Page` nao tinha um repositorio Git proprio. O Git estava subind
 - A branch local `main` foi alinhada para rastrear `origin/main`.
 - Arquivos que existiam no GitHub mas estavam ausentes localmente foram restaurados, incluindo `assets/the-staff-preview.png`.
 - O arquivo `.gitignore` passou a ignorar `.edge-profile/`, evitando enviar perfil local de navegador para o GitHub.
+- Foi criado o commit `b691761` com as alteracoes da landing page, provas visuais e configuracao Git.
+- O commit foi enviado para `origin/main` no GitHub.
 
 ### Simulacao e prevencao de regressao
 
@@ -285,5 +287,6 @@ Foram feitas as seguintes verificacoes:
 - Confirmado que `main` rastreia `origin/main`.
 - Confirmado que `assets/the-staff-preview.png` existe localmente depois da restauracao.
 - A estrategia usada preserva arquivos remotos que nao estavam na pasta local, evitando apagamento acidental no proximo commit.
+- Confirmado que o push para `https://github.com/TrueKatz/The-staff-landing-page` foi aceito pelo GitHub.
 
 O principal risco desta etapa era sobrescrever ou apagar arquivos do GitHub. Para prevenir isso, o historico remoto foi buscado antes de qualquer commit e os arquivos ausentes foram restaurados do remoto.
