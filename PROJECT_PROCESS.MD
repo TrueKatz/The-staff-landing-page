@@ -625,3 +625,29 @@ A pagina tinha seletor PT-BR/EN-US para textos, mas a imagem principal da galeri
 - A mudanca preserva a previa estatica inicial em PT-BR para robos de redes sociais, porque redes sociais geralmente nao executam JavaScript nem troca de idioma.
 - A imagem em EN-US continua disponivel para a galeria quando o usuario seleciona ingles.
 - O risco principal e cache no navegador ou em plataformas sociais. A troca dentro da pagina depende de JavaScript ativo, assim como o seletor de idioma ja dependia.
+
+## 2026-05-15 - Etapa 20: Previa de link fixa em portugues
+
+### Arquivos lidos antes da alteracao
+
+- `index.html`
+- `app.js`
+- `PROJECT_PROCESS.MD`
+- `PROJECT_STATUS.MD`
+
+### Estado real encontrado
+
+O HTML estatico ja apontava `og:image`, `og:image:secure_url`, `twitter:image` e `image` do JSON-LD para `assets/the-staff-link-preview.png`, a imagem em PT-BR. Porem o `app.js` ainda atualizava `og:image`, `twitter:image` e respectivos textos alternativos quando o usuario selecionava EN-US, podendo trocar a previa para a imagem em ingles durante fluxos que leem o DOM em runtime.
+
+### Alteracao realizada
+
+- A funcao `updatePreviewImage()` passou a trocar apenas a imagem visivel da galeria dentro da pagina.
+- Foram removidas as atualizacoes dinamicas de `og:image`, `og:image:secure_url`, `og:image:alt`, `og:image:width`, `og:image:height`, `twitter:image` e `twitter:image:alt`.
+- A constante `SITE_BASE_URL` foi removida porque nao e mais necessaria para metas sociais dinamicas.
+- Os textos alternativos estaticos de `og:image` e `twitter:image` foram ajustados para PT-BR.
+
+### Simulacao e prevencao de regressao
+
+- A previa de link fica fixa em portugues no HTML inicial.
+- A imagem da galeria ainda alterna por idioma dentro da pagina.
+- O risco principal continua sendo cache de plataformas como Facebook. Pode ser necessario usar Sharing Debugger para forcar novo scrape do link.

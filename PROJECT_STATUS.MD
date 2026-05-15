@@ -60,7 +60,7 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, favicon dedi
 - Imagem principal da galeria alternando por idioma:
   - PT-BR usa `assets/the-staff-link-preview.png`.
   - EN-US usa `assets/the-staff-preview.png`.
-- Metas sociais de imagem tambem sao atualizadas em runtime quando o idioma muda.
+- Metas sociais de imagem mantidas fixas em PT-BR para previews de links.
 - Fallback no seletor de idioma caso o navegador bloqueie `localStorage`.
 - Preco mensal base de US$ 10,00.
 - Conversao em tempo real para XMR e BRL via navegador.
@@ -82,7 +82,6 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, favicon dedi
 - Manter `assets/the-staff-link-preview.png` para previa de link e `assets/the-staff-preview.png` para a galeria visual.
 - Aguardar o GitHub Pages finalizar o deploy apos cada push.
 - Atualizar as URLs absolutas de previa de link se o site ganhar dominio proprio no futuro.
-- Se houver dominio proprio, atualizar tambem `SITE_BASE_URL` em `app.js` para manter as metas sociais dinamicas corretas.
 - Revisar textos finais de venda apos validacao visual e comercial do usuario.
 - Testar visualmente em navegador real antes de publicar.
 - Verificar no site publicado se o balao flutuante nao cobre CTAs importantes em telas pequenas.
@@ -101,7 +100,7 @@ Landing page estatica do The Staff com planos, CTAs, SEO reforcado, favicon dedi
 - A imagem principal e as provas agora aparecem fora do hero para evitar corte visual; validar no site publicado apos commit.
 - As capturas reais tem proporcoes diferentes da arte principal, entao a altura da secao visual deve ser revisada em mobile depois do deploy.
 - Plataformas sociais podem manter cache de previews por algum tempo apos o deploy.
-- Robos de redes sociais geralmente nao executam JavaScript, entao a previa estatica inicial continua em PT-BR mesmo que o visitante possa alternar para EN-US dentro da pagina.
+- Robos e ferramentas de anuncio podem usar cache de previews. Se a imagem antiga aparecer, reprocessar o link no Sharing Debugger do Facebook.
 - O navegador pode manter cache do favicon antigo; um recarregamento forte ou limpeza de cache pode ser necessario para ver o novo icone da aba.
 - O Meta Pixel agora carrega no site publicado apos o deploy e depende de validacao no Meta Events Manager.
 - Sem banner de consentimento, a responsabilidade por transparencia e base legal fica concentrada na politica de privacidade e nas configuracoes de anuncios/cookies escolhidas pelo responsavel do site.
